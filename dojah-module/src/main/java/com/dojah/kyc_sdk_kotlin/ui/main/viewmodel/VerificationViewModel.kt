@@ -1005,7 +1005,12 @@ class VerificationViewModel(
         val step = pages?.getOrNull(currentPageIndex)
         return ensureName?.let {
             // The stored index can lag behind the page being shown, so look the page up by name.
-            if (step?.name == ensureName) step else pages?.firstOrNull { page -> page.name == ensureName }
+            if (step?.name == ensureName) {
+                step
+            } else {
+                logger.log("page index $currentPageIndex is on ${step?.name}, looking up $ensureName by name")
+                pages?.firstOrNull { page -> page.name == ensureName }
+            }
         } ?: step
     }
 

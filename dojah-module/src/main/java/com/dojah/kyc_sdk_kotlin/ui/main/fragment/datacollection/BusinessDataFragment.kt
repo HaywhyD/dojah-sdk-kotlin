@@ -76,7 +76,7 @@ class BusinessDataFragment : SpinnerFragment(R.layout.fragment_business_data) {
                 updateUIWithSelectedBizId(it)
             }
 
-            govViewModel.prefillBizId(docTypes?.first())
+            govViewModel.prefillBizId(docTypes?.firstOrNull())
 
             viewModel.extraUserDataFromPref?.businessData.let {
 
